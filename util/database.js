@@ -9,7 +9,7 @@ const MongoConnect = callback => {
   _db = client.db();
   callback();
 }).catch(error => {
-  console.log("Error");
+  console.log(error);
 });
 }
 
