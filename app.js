@@ -46,6 +46,19 @@ app.use(errorController.get404);
   // })
 
   mongoose.connect('mongodb+srv://yashgupta03:Yash123@project1.t7unbog.mongodb.net/?retryWrites=true&w=majority').then(result => {
+    User.findOne().then(user => {
+      if(!user){
+        const user = new User({
+          name: 'Yash',
+          email: 'dnkj',
+          cart: {
+            items: []
+          }
+        });
+        user.save();
+      }
+    })
+    
     app.listen(3000);
   }).catch(err => {
     console.log(err);
