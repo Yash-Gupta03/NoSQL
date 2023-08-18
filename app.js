@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
 const MongoConnect = require('./util/database').MongoConnect;
 const User = require('./models/user');
 
@@ -40,6 +41,12 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 
-  MongoConnect(() =>{
+  // MongoConnect(() =>{
+  //   app.listen(3000);
+  // })
+
+  mongoose.connect('mongodb+srv://yashgupta03:Yash123@project1.t7unbog.mongodb.net/?retryWrites=true&w=majority').then(result => {
     app.listen(3000);
+  }).catch(err => {
+    console.log(err);
   })
